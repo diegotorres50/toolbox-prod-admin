@@ -145,7 +145,7 @@ class ProductService
     }
 
     //Metodo para actualizar
-    public function list()
+    public function listall()
     {
 
         try {

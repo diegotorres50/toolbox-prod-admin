@@ -4,7 +4,9 @@
 // Product group
 $app->group('/product', function () use ($app) {
     // Handles multiple HTTP request methods
-    $this->map(['GET', 'POST', 'DELETE', 'PATCH', 'PUT', 'OPTIONS'], '')->setName('product');
+    $this->map(['GET', 'POST', 'DELETE', 'PATCH', 'PUT', 'OPTIONS'], '', function ($request, $response, $args) {
+        // Find, delete, patch or replace user identified by $args['id']
+    })->setName('product');
 
     // Add a new product
     $this->post('/add', '\ProductController:add')->setName('product-add');
@@ -16,7 +18,7 @@ $app->group('/product', function () use ($app) {
     $this->put('/update', '\ProductController:update')->setName('product-update');
 
     // Update a product
-    $this->get('/list', '\ProductController:list')->setName('product-list');
+    $this->get('/list', '\ProductController:listall')->setName('product-list');
 });
 
 // Test group
