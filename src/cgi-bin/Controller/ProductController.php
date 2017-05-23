@@ -126,6 +126,12 @@ class ProductController
         return $response->withJson($feedback, $feedback['code']);
     }
 
+    /**
+    * Actualiza los productos al stock
+    *
+    * @return json $feedback lista de productos registrados
+    * @param string $email direccion de correo
+    */
     public function update($request, $response, $args)
     {
 
@@ -187,14 +193,15 @@ class ProductController
         return $response->withJson($feedback, $feedback['code']);
     }
 
-    public function list($request, $response, $args)
+    /**
+    * Lista los productos ingresados al stock
+    *
+    * @return json $feedback lista de productos registrados
+    */
+    public function listall($request, $response, $args)
     {
 
         $feedback = array();
-
-        $params = array();
-
-        $entry = array();
 
         try {
             //Obtenemos la dependencia de conexion mysql para usarla
@@ -202,7 +209,7 @@ class ProductController
 
             $authService = new ProductService($mysqliCli);
 
-            $data = $authService->list();
+            $data = $authService->listall();
 
             $feedback['status'] = 1;
             $feedback['code'] = 200;
