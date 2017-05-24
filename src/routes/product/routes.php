@@ -17,7 +17,7 @@ $app->group('/product', function () use ($app) {
     // Update a product
     $this->put('/update', '\ProductController:update')->setName('product-update');
 
-    // Update a product
+    // List a product
     $this->get('/list', '\ProductController:listall')->setName('product-list');
 });
 
@@ -27,5 +27,5 @@ $app->group('/test', function () use ($app) {
     $this->map(['GET', 'POST'], '')->setName('test');
 
     // Validate divisible number
-    $this->post('/divisible', '\DivisibleController:validate')->setName('divisible');
+    $this->get('/divisible', '\DivisibleController:validate')->setName('divisible');
 });
